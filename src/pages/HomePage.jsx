@@ -1,9 +1,12 @@
 import React from "react";
+import { PageScreen } from "../components/PageScreen/PageScreen";
 
 export const HomePage = () => {
   return (
     <>
-      <img src={process.env.PUBLIC_URL + "/images/thirsty_fashion_logo.png"} alt="logo" />
+      <PageScreen>
+        <h1>content</h1>
+      </PageScreen>
     </>
   );
 }
