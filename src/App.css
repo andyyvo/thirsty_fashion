@@ -1,8 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
+button:hover {
+  cursor: pointer;
+}
+
 .navbar {
   height: fit-content;
   width: 100%;
   position: relative;
-  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 8%;
 }
 
 .navbar-logo {
@@ -16,6 +25,160 @@
 
 .navbar-menu {
   float: right;
+}
+
+.contentscreen {
+  position: relative;
+  height: auto;
+  width: 100%;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 6rem;
+}
+h1.playfair {
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+}
+h1.playfair-italic {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+}
+h1.avenir {
+  font-family: "Avenir-Black", sans-serif;
+}
+h1.avenir-italic {
+  font-family: "Avenir-Black-Italic", sans-serif;
+  font-style: italic;
+}
+h1.inline {
+  display: inline;
+}
+
+h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 4.5rem;
+}
+h2.playfair {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+h2.playfair-italic {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+}
+h2.avenir {
+  font-family: "Avenir-Black", sans-serif;
+}
+h2.avenir-italic {
+  font-family: "Avenir-Black-Italic", sans-serif;
+  font-style: italic;
+}
+h2.inline {
+  display: inline;
+}
+
+h3 {
+  font-family: "Avenir-Black", sans-serif;
+  font-size: 3rem;
+}
+h3.playfair {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+h3.playfair-italic {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+}
+h3.avenir {
+  font-family: "Avenir-Black", sans-serif;
+}
+h3.avenir-italic {
+  font-family: "Avenir-Black-Italic", sans-serif;
+  font-style: italic;
+}
+h3.inline {
+  display: inline;
+}
+
+h4 {
+  font-family: "Avenir-Black", sans-serif;
+  font-size: 2rem;
+}
+h4.playfair {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+h4.playfair-italic {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+}
+h4.avenir {
+  font-family: "Avenir-Book", sans-serif;
+}
+h4.avenir-italic {
+  font-family: "Avenir-Book-Italic", sans-serif;
+  font-style: italic;
+}
+
+p {
+  font-family: "Avenir-Black", sans-serif;
+  font-size: 1rem;
+}
+p.playfair {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+p.playfair-italic {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+}
+p.avenir {
+  font-family: "Avenir-Book", sans-serif;
+}
+p.avenir-italic {
+  font-family: "Avenir-Book-Italic", sans-serif;
+  font-style: italic;
+}
+p.inline {
+  display: inline;
+}
+
+@font-face {
+  font-family: "Avenir-Book";
+  src: local("Avenir-Book"), url("./fonts/Avenir-Book.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Avenir-Book-Italic";
+  src: local("Avenir-BookOblique"), url("./fonts/Avenir-BookOblique.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Avenir-Black";
+  src: local("Avenir-Black"), url("./fonts/Avenir-Black.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Avenir-Black-Italic";
+  src: local("Avenir-BlackOblique"), url("./fonts/Avenir-BlackOblique.ttf") format("truetype");
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  font-style: normal;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=App.css.map */

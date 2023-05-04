@@ -11,7 +11,9 @@ export const PageScreen = (props) => {
   return (
     <div className="pagescreen">
       <NavBar />
-      {props.children}
+      <div className="contentscreen">
+        {props.children}
+      </div>
     </div>
   );
 }

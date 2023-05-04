@@ -1,0 +1,145 @@
+// text styles since there is no text component
+// there are styles for h1, h2, h3, h4, and p
+// to use styles, insert them in classname (e.g. <h1 className="avenir-italic inline">...</h1>)
+// each has playfair, playfair-italic, avenir, avenir-italic, and respective defaults
+// each also has inline if you want to use multiple styles in the same line
+
+// title
+h1 {
+  // default
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+
+  &.playfair {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+
+    &-italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+  }
+
+  &.avenir {
+    font-family: 'Avenir-Black', sans-serif;
+
+    &-italic {
+      font-family: 'Avenir-Black-Italic', sans-serif;
+      font-style: italic;
+    }
+  }
+
+  &.inline {
+    display: inline;
+  }
+}
+
+// main header
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.5rem;
+
+  &.playfair {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+
+    &-italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+  }
+
+  &.avenir {
+    font-family: 'Avenir-Black', sans-serif;
+
+    &-italic {
+      font-family: 'Avenir-Black-Italic', sans-serif;
+      font-style: italic;
+    }
+  }
+
+  &.inline {
+    display: inline;
+  }
+}
+
+// secondary header
+h3 {
+  font-family: 'Avenir-Black', sans-serif;
+  font-size: 3rem;
+
+  &.playfair {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+
+    &-italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+  }
+
+  &.avenir {
+    font-family: 'Avenir-Black', sans-serif;
+
+    &-italic {
+      font-family: 'Avenir-Black-Italic', sans-serif;
+      font-style: italic;
+    }
+  }
+
+  &.inline {
+    display: inline;
+  }
+}
+
+h4 {
+  font-family: 'Avenir-Black', sans-serif;
+  font-size: 2rem;
+
+  &.playfair {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+
+    &-italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+  }
+
+  &.avenir {
+    font-family: 'Avenir-Book', sans-serif;
+
+    &-italic {
+      font-family: 'Avenir-Book-Italic', sans-serif;
+      font-style: italic;
+    }
+  }
+}
+
+p {
+  font-family: 'Avenir-Black', sans-serif;
+  font-size: 1rem;
+
+  &.playfair {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+
+    &-italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+  }
+
+  &.avenir {
+    font-family: 'Avenir-Book', sans-serif;
+
+    &-italic {
+      font-family: 'Avenir-Book-Italic', sans-serif;
+      font-style: italic;
+    }
+  }
+
+  &.inline {
+    display: inline;
+  }
+}

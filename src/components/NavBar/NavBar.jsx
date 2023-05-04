@@ -21,7 +21,7 @@ export const NavBar = () => {
   const NavBarMenu = (
     <div className="navbar-menu">
       <Link to="/about">
-        <Button variant={"link"} color={"black"}>About</Button>
+        <Button variant={"link"} color={"black"}><p className="avenir">About</p></Button>
       </Link>
     </div>
   );
