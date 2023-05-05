@@ -2,7 +2,9 @@
 // there are styles for h1, h2, h3, h4, and p
 // to use styles, insert them in classname (e.g. <h1 className="avenir-italic inline">...</h1>)
 // each has playfair, playfair-italic, avenir, avenir-italic, and respective defaults
-// each also has inline if you want to use multiple styles in the same line
+// each also has inline if you want to use multiple styles in the same line (both lines have to have inline prop)
+// each also has a right align option (but this does not work if inline is used)
+// h1 also has large for bigger title and p has mini
 
 // title
 h1 {
@@ -31,6 +33,14 @@ h1 {
 
   &.inline {
     display: inline;
+  }
+
+  &.right {
+    text-align: right;
+  }
+
+  &.large {
+    font-size: 8rem;
   }
 }
 
@@ -61,6 +71,10 @@ h2 {
   &.inline {
     display: inline;
   }
+
+  &.right {
+    text-align: right;
+  }
 }
 
 // secondary header
@@ -90,6 +104,10 @@ h3 {
   &.inline {
     display: inline;
   }
+
+  &.right {
+    text-align: right;
+  }
 }
 
 h4 {
@@ -114,10 +132,18 @@ h4 {
       font-style: italic;
     }
   }
+
+  &.inline {
+    display: inline;
+  }
+
+  &.right {
+    text-align: right;
+  }
 }
 
 p {
-  font-family: 'Avenir-Black', sans-serif;
+  font-family: 'Avenir-Book', sans-serif;
   font-size: 1rem;
 
   &.playfair {
@@ -139,7 +165,15 @@ p {
     }
   }
 
+  &.mini {
+    font-size: 0.75rem;
+  }
+
   &.inline {
     display: inline;
+  }
+
+  &.right {
+    text-align: right;
   }
 }

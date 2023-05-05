@@ -8,8 +8,10 @@ import { NavBar } from "../NavBar/NavBar";
  */
 
 export const PageScreen = (props) => {
+  const classname = `pagescreen ${props.classname}`;
+
   return (
-    <div className="pagescreen">
+    <div className={classname}>
       <NavBar />
       <div className="contentscreen">
         {props.children}

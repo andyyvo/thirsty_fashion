@@ -55,6 +55,12 @@ h1.avenir-italic {
 h1.inline {
   display: inline;
 }
+h1.right {
+  text-align: right;
+}
+h1.large {
+  font-size: 8rem;
+}
 
 h2 {
   font-family: "Playfair Display", serif;
@@ -77,6 +83,9 @@ h2.avenir-italic {
 }
 h2.inline {
   display: inline;
+}
+h2.right {
+  text-align: right;
 }
 
 h3 {
@@ -101,6 +110,9 @@ h3.avenir-italic {
 h3.inline {
   display: inline;
 }
+h3.right {
+  text-align: right;
+}
 
 h4 {
   font-family: "Avenir-Black", sans-serif;
@@ -121,9 +133,15 @@ h4.avenir-italic {
   font-family: "Avenir-Book-Italic", sans-serif;
   font-style: italic;
 }
+h4.inline {
+  display: inline;
+}
+h4.right {
+  text-align: right;
+}
 
 p {
-  font-family: "Avenir-Black", sans-serif;
+  font-family: "Avenir-Book", sans-serif;
   font-size: 1rem;
 }
 p.playfair {
@@ -141,8 +159,14 @@ p.avenir-italic {
   font-family: "Avenir-Book-Italic", sans-serif;
   font-style: italic;
 }
+p.mini {
+  font-size: 0.75rem;
+}
 p.inline {
   display: inline;
+}
+p.right {
+  text-align: right;
 }
 
 @font-face {
