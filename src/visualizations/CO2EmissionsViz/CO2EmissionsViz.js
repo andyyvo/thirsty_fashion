@@ -9,19 +9,13 @@ import {
 
 // transition info
 const smog_duration = 4000;
-const pour_duration = 2000;
+const bar_duration = 3000;
 const smog_offset = 500;
-const pourTransition = () => {
-    return d3.transition().duration(pour_duration).ease(d3.easeCubicInOut);
+const barTransition = () => {
+    return d3.transition().duration(bar_duration).ease(d3.easeCubicInOut);
 }
 const smogTransition = () => {
-    return d3.transition().duration(smog_duration).ease(d3.easeCubicInOut);
-}
-const emissionTransition = () => {
-    return d3.transition().duration(pour_duration).ease(d3.easeCubicInOut);
-}
-const waterTransition = () => {
-    return d3.transition().duration(3000).ease(d3.easeCubicInOut);
+    return d3.transition().duration(smog_duration).ease(d3.easeLinear);
 }
 
 // constant axis info
@@ -119,7 +113,7 @@ const render_bars = (data, updateButton) => {
         .attr("y", vizSize.height)
         .attr("fill", "white")
         .attr("stroke", "transparent")
-        .transition(waterTransition())
+        .transition(barTransition())
         // .delay((d, i) => {
         //     return pour_duration / 2 + 100 * i;
         // })
@@ -133,7 +127,7 @@ const render_bars = (data, updateButton) => {
     // smog emitting function
     let smog_counter = 0;
     const delay = ms => new Promise(res => setTimeout(res, ms));
-    const render_smog = async (time_delay, size) => {
+    const render_smog = async (size) => {
         // render smog
         svg
             .append("g")
@@ -157,16 +151,16 @@ const render_bars = (data, updateButton) => {
 
         // generate next smog
         const smog_size = Math.random() + 1;
-        const smog_delay = (Math.random() + 1) * 2000;
+        const smog_delay = (Math.random() + 1) * 1500;
         await delay(smog_delay);
         console.log('smog delay, size', smog_counter, smog_delay, smog_size);
         smog_counter += 1;
         if (smog_counter < 500) {
-            render_smog(time_delay, smog_size)
+            render_smog(smog_size)
         }
     };
 
-    render_smog(1000, 100) // initial call
+    render_smog(100) // initial call
 
     // add numbers
     svg
@@ -180,9 +174,9 @@ const render_bars = (data, updateButton) => {
         .attr("x", (d) => barX(d.production_type) + barX.bandwidth() / 2)
         .attr("y", vizSize.height - 5)
         .attr("opacity", 0)
-        .transition(waterTransition())
+        .transition(barTransition())
         .delay((d, i) => {
-            return pour_duration * 1.1 + 100 * i;
+            return bar_duration * 0.6 + 100 * i;
         })
         .attr("opacity", 1)
         .attr("y", (d) => barY(d.emissions) - 5)
