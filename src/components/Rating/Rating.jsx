@@ -18,7 +18,7 @@ export const Rating = (props) => {
   /** state to set mouse hover rating value from 0 to whatever the mouse is on */
   const [hover, setHover] = useState(0);
   /** state to indicate if a rating has been selected */
-  const [ratingSelected, setRatingSelected] = useState(0);
+  // const [ratingSelected, setRatingSelected] = useState(0);
 
   /** rating alignment classname */
   const ratingAlignName = () => {
@@ -31,17 +31,17 @@ export const Rating = (props) => {
     }
   }
 
-  /** rating selected classname */
-  const ratingSelectedName = () => {
-    if (ratingSelected === 0) {
-      return "notSelected";
-    } else if (ratingSelected === 1) {
-      return "selected";
-    }
-  }
+  // /** rating selected classname */
+  // const ratingSelectedName = () => {
+  //   if (ratingSelected === 0) {
+  //     return "notSelected";
+  //   } else if (ratingSelected === 1) {
+  //     return "selected";
+  //   }
+  // }
 
   return (
-    <div className={ratingAlignName() + " " + ratingSelectedName()}>
+    <div className={ratingAlignName()}>
       <div className="rating-bar">
         {[...Array(props.ratingMax)].map((val, index) => {
           index += 1;
@@ -53,7 +53,7 @@ export const Rating = (props) => {
               onClick={() => {
                 props.ratingTrigger(index);
                 setRating(index);
-                setRatingSelected(1);
+                // setRatingSelected(1);
               }}
               onMouseEnter={() => setHover(index)}
               onMouseLeave={() => setHover(rating)}
