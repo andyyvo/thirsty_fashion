@@ -1,0 +1,27 @@
+[
+  {
+    "production_type": "Cotton production",
+    "percentage": 8,
+    "emissions": 208
+  },
+  {
+    "production_type": "Yarn production",
+    "percentage": 19,
+    "emissions": 494
+  },
+  {
+    "production_type": "Garment production",
+    "percentage": 50,
+    "emissions": 1300
+  },
+  {
+    "production_type": "Distribution & retailing",
+    "percentage": 4,
+    "emissions": 104
+  },
+  {
+    "production_type": "User phase",
+    "percentage": 19,
+    "emissions": 494
+  }
+]
