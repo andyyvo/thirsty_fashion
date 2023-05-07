@@ -10,6 +10,7 @@ import {
 // transition info
 const smog_duration = 4000;
 const pour_duration = 2000;
+const smog_offset = 500;
 const pourTransition = () => {
     return d3.transition().duration(pour_duration).ease(d3.easeCubicInOut);
 }
@@ -39,7 +40,7 @@ const barXAxis = (g) =>
 
 const barY = d3
     .scaleLinear()
-    .domain([0, d3.max(CO2, (d) => d.emissions) + 15])
+    .domain([0, d3.max(CO2, (d) => d.emissions) + smog_offset])
     .range([vizSize.height, vizMargin.top]);
 
 const barYAxis = (g) =>
@@ -76,14 +77,15 @@ const render_chart = (data) => {
             `translate(${vizMargin.left / 2}, ${vizSize.height / 2})rotate(-90)`
         )
         .attr("text-anchor", "middle")
-        .text("Kg per Kg of fabric");
+        .text("CO2 Emissions (kg per kg of fabric)");
 };
+
 
 // render smog emitting/bars growing
 const render_bars = (data, updateButton) => {
     const svg = d3.select('#CO2-emissions-svg');
 
-    // add CO2 smog being emitted
+    // add static CO2 smog being emitted
     svg
         .append("g")
         .attr("id", "CO2-emission-smog-group")
@@ -98,9 +100,9 @@ const render_bars = (data, updateButton) => {
         .transition(smogTransition())
         .attr("r", d => Math.pow(d.emissions, 0.6))
         .attr("cx", d => barX(d.production_type) + barX.bandwidth() / 2)
-        .attr("cy", (d) =>  barY(d.emissions))
+        .attr("cy", (d) => barY(d.emissions))
         .attr("fill", "grey")
-        .attr("opacity", 0.1);
+        .attr("opacity", 0.3);
 
     // add bars
     svg
@@ -125,6 +127,46 @@ const render_bars = (data, updateButton) => {
         .attr("y", (d) => barY(d.emissions))
         .attr("stroke", "black")
         .attr("fill", "grey");
+
+    // add continuous CO2 emission animation
+
+    // smog emitting function
+    let smog_counter = 0;
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const render_smog = async (time_delay, size) => {
+        // render smog
+        svg
+            .append("g")
+            .attr("class", "CO2-animated-smog-group")
+            .selectAll("circle")
+            .data(data)
+            .join("circle")
+            .attr("r", 0)
+            .attr("cx", d => barX(d.production_type) + barX.bandwidth() / 2)
+            .attr("cy", d => barY(d.emissions))
+            .attr("opacity", 0.3)
+            .attr("fill", "grey")
+            .transition(smogTransition())
+            .attr("r", d => Math.pow(d.emissions, 0.6) * size)
+            .attr("cx", d => barX(d.production_type) + barX.bandwidth() / 2 + 2 * barX.bandwidth())
+            .attr("cy", (d) => barY(d.emissions) - smog_offset)
+            .attr("fill", "grey")
+            .attr("opacity", 0);
+            // .exit()
+            // .remove();
+
+        // generate next smog
+        const smog_size = Math.random() + 1;
+        const smog_delay = (Math.random() + 1) * 2000;
+        await delay(smog_delay);
+        console.log('smog delay, size', smog_counter, smog_delay, smog_size);
+        smog_counter += 1;
+        if (smog_counter < 500) {
+            render_smog(time_delay, smog_size)
+        }
+    };
+
+    render_smog(1000, 100) // initial call
 
     // add numbers
     svg
