@@ -1,5 +1,14 @@
+.pagescreen {
+}
+
 .contentscreen {
   position: relative;
-  height: auto;
+  height: 100vh; // for scroll screen
   width: 100%;
+  overflow: scroll;
+}
+
+.snap {
+  scroll-snap-type: mandatory;
+  scroll-snap-type: y mandatory;
 }

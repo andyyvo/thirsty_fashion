@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
+import Logo from "../../assets/images/thirsty_fashion_logo.png";
 
 /**
  * nav bar will be outside of screen as item located at top of every screen
@@ -12,7 +13,7 @@ export const NavBar = () => {
   const NavBarLogo = (
     <div className="navbar-logo">
       <Link to="/">
-        <img src={process.env.PUBLIC_URL + "/images/thirsty_fashion_logo.png"} alt="logo" />
+        <img src={Logo} alt="logo" />
       </Link>
     </div>
   );

@@ -1,0 +1,113 @@
+@use '../variables' as v;
+
+// scroll snapping help
+// https://stackoverflow.com/questions/53416348/css-scroll-snapping-vertical-not-working
+
+.homepage {
+  // background-color: v.$blue2;
+  // background-image: linear-gradient(315deg, v.$blue2 0%, v.$blue3 74%);
+}
+
+.homepage-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  // background-color: skyblue;
+  scroll-snap-align: start;
+  padding: 5% 10%;
+}
+
+#homepage-hero-title1 {
+  color: v.$black;
+}
+#homepage-hero-title2 {
+  color: v.$black;
+}
+#homepage-hero-title3 {
+  color: v.$cream;
+}
+
+.homepage-survey {
+  position: relative;
+  // background-color: lightblue;
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+
+  &-content {
+    padding: 5% 10%;
+  }
+}
+
+#homepage-survey-title {
+  margin-bottom: 2rem;
+}
+#homepage-survey-question {
+  margin-bottom: 4rem;
+}
+
+// water filling animation
+// https://stackoverflow.com/questions/29738787/filling-water-animation
+
+.fillAnimation {
+  opacity: 0;
+}
+
+.rating[ratingSelected='1'] {
+  & ~ .fillAnimation {
+    transform: translateY(100vh);
+    animation-name: fillAction;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.2, .6, .8, .4);
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.25s;
+  }
+
+  & ~ .pourAnimation {
+    width: 2rem;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    top: 0;
+    background-color: v.$blue2;
+    background-image: linear-gradient(315deg, v.$blue2 0%, v.$blue3 74%);
+    animation-name: pourAction;
+    animation-timing-function: linear;
+    animation-duration: 0.25s;
+  }
+}
+
+#waveShape {
+  animation-name: waveAction;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 0.5s;
+}
+
+@keyframes pourAction {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fillAction {
+  0% {
+    transform: translateY(150px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes waveAction {
+  0% {
+    transform: translate(-150px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

@@ -4,32 +4,34 @@
 @import "./components/button";
 @import "./components/navbar";
 @import "./components/pagescreen";
+@import "./components/rating";
 @import "./components/text";
+@import "./pages/homepage";
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 
 @font-face {
   font-family: "Avenir-Book";
   src: local("Avenir-Book"),
-    url("./fonts/Avenir-Book.ttf") format("truetype");
+    url("./assets/fonts/Avenir-Book.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Avenir-Book-Italic";
   src: local("Avenir-BookOblique"),
-    url("./fonts/Avenir-BookOblique.ttf") format("truetype");
+    url("./assets/fonts/Avenir-BookOblique.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Avenir-Black";
   src: local("Avenir-Black"),
-    url("./fonts/Avenir-Black.ttf") format("truetype");
+    url("./assets/fonts/Avenir-Black.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Avenir-Black-Italic";
   src: local("Avenir-BlackOblique"),
-    url("./fonts/Avenir-BlackOblique.ttf") format("truetype");
+    url("./assets/fonts/Avenir-BlackOblique.ttf") format("truetype");
 }
 
 * {

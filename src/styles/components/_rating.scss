@@ -1,0 +1,23 @@
+span.rating-item-span svg {
+  height: 4rem;
+  width: auto;
+}
+
+.rating {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &.left {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  &.center {
+    justify-content: center;
+    align-items: center;
+  }
+  &.right {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}
