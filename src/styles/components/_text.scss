@@ -6,6 +6,8 @@
 // each also has a right align option (but this does not work if inline is used)
 // h1 also has large for bigger title and p has mini
 
+@use '../variables' as v;
+
 // title
 h1 {
   // default
@@ -176,4 +178,32 @@ p {
   &.right {
     text-align: right;
   }
+}
+
+.blue1text {
+  color: v.$blue1;
+}
+.blue2text {
+  color: v.$blue2;
+}
+.blue3text {
+  color: v.$blue3;
+}
+.blue4text {
+  color: v.$blue4;
+}
+.blacktext {
+  color: v.$black;
+}
+.whitetext {
+  color: v.$white;
+}
+.offwhitetext {
+  color: v.$off-w;
+}
+.creamtext {
+  color: v.$cream;
+}
+.redtext {
+  color: v.$red;
 }

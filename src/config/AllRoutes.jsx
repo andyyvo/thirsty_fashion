@@ -5,6 +5,7 @@ import {
 import { HomePage } from "../pages/HomePage";
 import { ErrorPage } from "../pages/ErrorPage";
 import { AboutPage } from "../pages/AboutPage";
+import { InfoPage1 } from "../pages/InfoPage1";
 
 export const router = createBrowserRouter([
   /** home root */
@@ -16,5 +17,9 @@ export const router = createBrowserRouter([
   {
     path: "/about",
     element: <AboutPage />,
+  },
+  {
+    path: "/info1",
+    element: <InfoPage1 />
   }
 ]);

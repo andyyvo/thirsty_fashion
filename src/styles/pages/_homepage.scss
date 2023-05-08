@@ -4,8 +4,8 @@
 // https://stackoverflow.com/questions/53416348/css-scroll-snapping-vertical-not-working
 
 .homepage {
-  // background-color: v.$blue2;
-  // background-image: linear-gradient(315deg, v.$blue2 0%, v.$blue3 74%);
+  background: url("/src/assets/images/textile-background.jpg") left top no-repeat;
+  box-shadow: inset 0 0 0 1000px rgba(255,255,255,0.5);
 }
 
 .homepage-hero {
@@ -15,16 +15,6 @@
   // background-color: skyblue;
   scroll-snap-align: start;
   padding: 5% 10%;
-}
-
-#homepage-hero-title1 {
-  color: v.$black;
-}
-#homepage-hero-title2 {
-  color: v.$black;
-}
-#homepage-hero-title3 {
-  color: v.$cream;
 }
 
 .homepage-survey {
@@ -47,6 +37,7 @@
 }
 
 // water filling animation
+//https://medium.com/swlh/css-animations-with-react-hooks-1d855dab4a3
 // https://stackoverflow.com/questions/29738787/filling-water-animation
 
 .pourAnimation {
@@ -62,7 +53,7 @@
 .pourAnimation[animation="1"] {
   animation-name: pourAction;
   animation-timing-function: linear;
-  animation-duration: 1s;
+  animation-duration: 0.65s;
   animation-fill-mode: forwards; 
 }
 
@@ -91,7 +82,7 @@
   animation-timing-function: cubic-bezier(.2, .6, .8, .4);
   animation-duration: 4s;
   animation-fill-mode: forwards;
-  animation-delay: 1s;
+  animation-delay: 0.45s;
   display: block;
 }
 
