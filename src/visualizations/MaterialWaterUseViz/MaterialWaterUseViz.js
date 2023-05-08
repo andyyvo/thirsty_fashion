@@ -55,7 +55,8 @@ export default function MaterialWaterUseViz({ width, height, margins }) {
         svg.append("g").call(barXAxis);
         svg
             .append("text")
-            .attr("x", width / 2) // center label
+            .attr("x", (width + margins.left) / 2)
+            //  ) // center label
             .attr("y", height + margins.bottom + margins.top - 5)
             .attr("text-anchor", "middle")
             // .attr("font-size", 10)
@@ -158,8 +159,7 @@ export default function MaterialWaterUseViz({ width, height, margins }) {
     }, []);
 
     return (
-        <>
-            <div>MaterialWaterUseViz</div>
+        <div className='material-svg-div'>
             <input
                 type='button'
                 id="pour-button"
@@ -168,8 +168,9 @@ export default function MaterialWaterUseViz({ width, height, margins }) {
                 disabled={waterPoured}
             >
             </input>
-            <svg id="material-water-svg">
+            <br></br>
+            <svg id="material-water-svg" className='material-svg'>
             </svg>
-        </>
+        </div>
     )
 }
