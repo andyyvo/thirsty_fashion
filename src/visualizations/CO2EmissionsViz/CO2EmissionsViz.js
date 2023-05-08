@@ -153,7 +153,7 @@ const render_bars = (data, updateButton) => {
         const smog_size = Math.random() + 1;
         const smog_delay = (Math.random() + 1) * 1500;
         await delay(smog_delay);
-        console.log('smog delay, size', smog_counter, smog_delay, smog_size);
+        // console.log('smog delay, size', smog_counter, smog_delay, smog_size);
         smog_counter += 1;
         if (smog_counter < 500) {
             render_smog(smog_size)
