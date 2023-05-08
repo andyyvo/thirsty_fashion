@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import * as d3 from 'd3';
-import './MaterialWaterUseViz.css'
+import './MaterialEnergyUseViz.css'
 import materials from '../../data/materials.json';
 import {
     vizMargin, vizSize
@@ -8,9 +8,9 @@ import {
 
 
 // transition info
-const pour_duration = 2000;
-const pourTransition = () => {
-    return d3.transition().duration(pour_duration).ease(d3.easeCubicInOut);
+const drain_duration = 2000;
+const pulseTransition = () => {
+    return d3.transition().duration(drain_duration).ease(d3.easeCubicInOut);
 }
 const waterTransition = () => {
     return d3.transition().duration(3000).ease(d3.easeCubicInOut);
@@ -19,8 +19,8 @@ const waterTransition = () => {
 // constant axis info
 const barX = d3
     .scaleBand()
-    .domain(materials.map((d) => d.material))
-    // .domain(['Cotton','Wool','Cellulosics','Hemp','Polyamide','Polyester'])
+    // .domain(materials.map((d) => d.material))
+    .domain(['Polyamide', 'Wool', 'Polyester', 'Cellulosics', 'Cotton', 'Hemp',])
     .range([vizMargin.left, vizSize.width])
     .padding(0.1)
     .align(0.5);
@@ -32,7 +32,7 @@ const barXAxis = (g) =>
 
 const barY = d3
     .scaleLinear()
-    .domain([0, d3.max(materials, (d) => d.water_use) + 15])
+    .domain([0, d3.max(materials, (d) => d.energy_consumption) + 15])
     .range([vizSize.height, vizMargin.top]);
 
 const barYAxis = (g) =>
@@ -43,7 +43,7 @@ const barYAxis = (g) =>
 // render initial chart
 const render_chart = (data) => {
     // select the container
-    const svg = d3.select('#material-water-svg')
+    const svg = d3.select('#material-energy-use-svg')
         .attr("width", vizSize.width + vizMargin.left + vizMargin.right)
         .attr("height", vizSize.height + vizMargin.top + vizMargin.bottom);
 
@@ -69,59 +69,66 @@ const render_chart = (data) => {
             `translate(${vizMargin.left / 2}, ${vizSize.height / 2})rotate(-90)`
         )
         .attr("text-anchor", "middle")
-        .text("Water use (Liters per kg of fabric)");
+        .text("Energy use (KwH per kg of fabric)");
 };
 
 // render water pouring/bars growing
 const render_bars = (data, updateButton) => {
-    const svg = d3.select('#material-water-svg');
-    // add water pouring
-    svg
-        .append("g")
-        .attr("id", "material-water-pour-group")
-        .selectAll("rect")
-        .data(data)
-        .join("rect")
-        .attr("width", d => Math.pow(d.water_use, 0.5))
-        .attr("x", d => barX(d.material) + barX.bandwidth() / 2 - Math.pow(d.water_use, 0.5) / 2)
-        .attr("height", 10)
-        .attr("fill", "lightblue")
-        .transition(pourTransition())
-        .attr("width", d => Math.pow(d.water_use, 0.5))
-        .attr("x", d => barX(d.material) + barX.bandwidth() / 2 - Math.pow(d.water_use, 0.5) / 2)
-        .attr("height", vizSize.height)
-        .attr("y", d => 0)
-        .attr("fill", "lightblue")
-        .transition(pourTransition())
-        .attr("x", d => barX(d.material) + barX.bandwidth() / 2 - Math.pow(d.water_use, 0.5) / 2)
-        .attr("width", 0)
-        .attr("height", 0)
-        .attr("y", vizSize.height)
-        .attr("fill", "lightblue");
+    const svg = d3.select('#material-energy-use-svg');
 
     // add bars
     svg
         .append("g")
-        .attr("id", "material-water-bar-group")
+        .attr("id", "material-energy-bar-group")
         .selectAll("rect")
         .data(data)
         .join("rect")
-        .attr("class", "material-water-bars")
-        .attr("id", d => d.material + '-water-bar')
-        .attr("width", barX.bandwidth())
-        .attr("x", d => barX(d.material))
-        .attr("height", 0)
-        .attr("y", vizSize.height)
+        .attr("class", "material-energy-bars")
+        .attr("id", d => d.material + '-energy-bar')
+        .attr("width", 0)
+        .attr("x", d => barX(d.material) + barX.bandwidth() / 2)
+        .attr("height", (d) => vizSize.height - barY(d.energy_consumption))
+        // .attr("y", vizSize.height)
+        .attr("y", (d) => barY(d.energy_consumption))
         .attr("fill", "white")
         .attr("stroke", "transparent")
         .transition(waterTransition())
         .delay((d, i) => {
-            return pour_duration / 2 + 100 * i;
+            return drain_duration / 2 + 100 * i;
         })
-        .attr("height", (d) => vizSize.height - barY(d.water_use))
-        .attr("y", (d) => barY(d.water_use))
+        .attr("x", d => barX(d.material))
+        .attr("width", barX.bandwidth())
+        .attr("height", (d) => vizSize.height - barY(d.energy_consumption))
+        // .attr("y", (d) => barY(d.energy_consumption))
         .attr("stroke", "black")
-        .attr("fill", "lightblue");
+        .attr("fill", "#F0CF65");
+
+    // start pulsing opacity
+    let pulse_counter = 0
+    const pulse_delay = 6000
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const pulse_opacity = async (pulse_delay) => {
+        await delay(pulse_delay);
+        const bars = d3.selectAll(".material-energy-bars")
+            .attr('opacity', d => {
+                console.log('bef', 1 - (pulse_counter % 2) / 2)
+                return 1 - (pulse_counter % 2) / 2
+            })
+            .attr("width", barX.bandwidth())
+            .transition(pulseTransition())
+            // .transition()
+            .attr('opacity', d => {
+                console.log('aft', (pulse_counter % 2) / 2 + 0.5)
+                return (pulse_counter % 2) / 2 + 0.5
+            })
+        console.log('bars', bars);
+        pulse_counter += 1
+        console.log('pc', pulse_counter);
+        if (pulse_counter < 500) {
+            pulse_opacity(3000);
+        }
+    }
+    pulse_opacity(pulse_delay);
 
     // add numbers
     svg
@@ -137,18 +144,18 @@ const render_bars = (data, updateButton) => {
         .attr("opacity", 0)
         .transition(waterTransition())
         .delay((d, i) => {
-            return pour_duration * 1.1 + 100 * i;
+            return drain_duration * 1.1 + 100 * i;
         })
         .attr("opacity", 1)
-        .attr("y", (d) => barY(d.water_use) - 5)
-        .text(d => d.water_use)
+        .attr("y", (d) => barY(d.energy_consumption) - 5)
+        .text(d => d.energy_consumption)
 
     // disable button after one pour
     updateButton(true);
 
 };
 
-export default function MaterialWaterUseViz() {
+export default function MaterialEnergyUseViz() {
     const [waterPoured, setWaterPoured] = useState(false);
 
     // initial chart render
@@ -158,15 +165,15 @@ export default function MaterialWaterUseViz() {
 
     return (
         <>
-            <div>MaterialWaterUseViz</div>
+            <div>MaterialEnergyUseViz</div>
             <input
                 type='button'
                 id="pour-button"
                 onClick={() => { render_bars(materials, setWaterPoured) }}
-                value='Pour Water'
+                value='Use Energy'
             >
             </input>
-            <svg id="material-water-svg">
+            <svg id="material-energy-use-svg">
             </svg>
         </>
     )

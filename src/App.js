@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import MaterialWaterUseViz from './visualizations/MaterialWaterUseViz/MaterialWaterUseViz';
+import MaterialEnergyUseViz from './visualizations/MaterialEnergyUseViz/MaterialEnergyUseViz';
 import CO2EmissionsViz from './visualizations/CO2EmissionsViz/CO2EmissionsViz';
 import BackgroundWaterFillViz from './visualizations/BackgroundWaterFillViz/BackgroundWaterFillViz';
 import { RouterProvider } from 'react-router-dom';
@@ -21,6 +22,7 @@ function App() {
         <RouterProvider router={router} />
         <div className='all-viz-div'>
         < MaterialWaterUseViz />
+        < MaterialEnergyUseViz />
         < CO2EmissionsViz />
         {isLoaded && < BackgroundWaterFillViz color='red'/>}
         </div>
