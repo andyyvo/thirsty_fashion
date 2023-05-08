@@ -8,12 +8,13 @@ import {
 
 
 // transition info
-const bar_duration = 2000;
+const bar_duration = 3000;
+const pulse_duration = 1500;
 const pulseTransition = () => {
-    return d3.transition().duration(bar_duration).ease(d3.easeCubicInOut);
+    return d3.transition().duration(pulse_duration).ease(d3.easeCubicInOut);
 }
-const waterTransition = () => {
-    return d3.transition().duration(3000).ease(d3.easeCubicInOut);
+const barTransition = () => {
+    return d3.transition().duration(bar_duration).ease(d3.easeCubicInOut);
 }
 
 // constant axis info
@@ -92,9 +93,9 @@ const render_bars = (data, updateButton) => {
         .attr("y", (d) => barY(d.energy_consumption))
         .attr("fill", "white")
         .attr("stroke", "transparent")
-        .transition(waterTransition())
+        .transition(barTransition())
         .delay((d, i) => {
-            return bar_duration / 2 + 100 * i;
+            return bar_duration / 3 + 100 * i;
         })
         .attr("x", d => barX(d.material))
         .attr("width", barX.bandwidth())
@@ -111,18 +112,18 @@ const render_bars = (data, updateButton) => {
         const mod_2_opacity = (pulse_counter % 2);
         await delay(pulse_delay);
         d3.selectAll(".material-energy-bars")
-            .attr('opacity', 1 - mod_2_opacity * 0.6)
-            .attr("x", d => barX(d.material) + (barX.bandwidth() * (1 - (1 - mod_2_opacity * 0.1))/2))
+            .attr('opacity', 1 - mod_2_opacity * 0.5)
+            .attr("x", d => barX(d.material) + (barX.bandwidth() * (1 - (1 - mod_2_opacity * 0.1)) / 2))
             .attr("width", barX.bandwidth() * (1 - mod_2_opacity * 0.1))
             .transition(pulseTransition())
-            .attr('opacity', mod_2_opacity * 0.6 + 0.4)
-            .attr("x", d => barX(d.material) + (barX.bandwidth() * (1 - (mod_2_opacity * 0.1 + 0.9))/2))
+            .attr('opacity', mod_2_opacity * 0.5 + 0.5)
+            .attr("x", d => barX(d.material) + (barX.bandwidth() * (1 - (mod_2_opacity * 0.1 + 0.9)) / 2))
             .attr("width", barX.bandwidth() * (mod_2_opacity * 0.1 + 0.9));
 
         pulse_counter += 1
         // console.log('pc', pulse_counter);
         if (pulse_counter < 500) {
-            pulse_opacity(2000); // change duration based on mod
+            pulse_opacity(1500); // change duration based on mod
             // pulse_opacity(2000/(mod_2_opacity + 1)); // change duration based on mod
         }
     }
@@ -142,7 +143,7 @@ const render_bars = (data, updateButton) => {
         // .attr("y", vizSize.height - 5)
         .attr("y", (d) => barY(d.energy_consumption) - 5)
         .attr("opacity", 0)
-        .transition(waterTransition())
+        .transition(barTransition())
         .delay((d, i) => {
             return bar_duration * 1.1 + 100 * i;
         })
@@ -170,6 +171,7 @@ export default function MaterialEnergyUseViz() {
                 id="pour-button"
                 onClick={() => { render_bars(materials, setWaterPoured) }}
                 value='Use Energy'
+                disabled={waterPoured}
             >
             </input>
             <svg id="material-energy-use-svg">

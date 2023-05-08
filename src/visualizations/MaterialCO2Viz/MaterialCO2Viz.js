@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import * as d3 from 'd3';
-import './MaterialWaterUseViz.css'
+import './MaterialCO2Viz.css'
 import materials from '../../data/materials.json';
 import {
     vizMargin, vizSize
@@ -8,19 +8,25 @@ import {
 
 
 // transition info
-const pour_duration = 2000;
-const pourTransition = () => {
-    return d3.transition().duration(pour_duration).ease(d3.easeCubicInOut);
+const smog_duration = 4000;
+const bar_duration = 3000;
+const smog_offset = 500;
+const barTransition = () => {
+    return d3.transition().duration(bar_duration).ease(d3.easeCubicInOut);
 }
-const waterTransition = () => {
-    return d3.transition().duration(3000).ease(d3.easeCubicInOut);
+const smogTransition = () => {
+    return d3.transition().duration(smog_duration).ease(d3.easeLinear);
 }
+const smogTransition2 = () => {
+    return d3.transition().duration(smog_duration * 3/2).ease(d3.easeLinear);
+}
+
 
 // constant axis info
 const barX = d3
     .scaleBand()
-    .domain(materials.map((d) => d.material))
-    // .domain(['Cotton','Wool','Cellulosics','Hemp','Polyamide','Polyester'])
+    // .domain(materials.map((d) => d.material))
+    .domain(['Wool', 'Polyamide', 'Cellulosics', 'Polyester', 'Hemp', 'Cotton'])
     .range([vizMargin.left, vizSize.width])
     .padding(0.1)
     .align(0.5);
@@ -32,7 +38,7 @@ const barXAxis = (g) =>
 
 const barY = d3
     .scaleLinear()
-    .domain([0, d3.max(materials, (d) => d.water_use) + 15])
+    .domain([0, d3.max(materials, (d) => d.CO2_emission) + 15])
     .range([vizSize.height, vizMargin.top]);
 
 const barYAxis = (g) =>
@@ -43,7 +49,7 @@ const barYAxis = (g) =>
 // render initial chart
 const render_chart = (data) => {
     // select the container
-    const svg = d3.select('#material-water-svg')
+    const svg = d3.select('#material-CO2-svg')
         .attr("width", vizSize.width + vizMargin.left + vizMargin.right)
         .attr("height", vizSize.height + vizMargin.top + vizMargin.bottom);
 
@@ -69,86 +75,122 @@ const render_chart = (data) => {
             `translate(${vizMargin.left / 2}, ${vizSize.height / 2})rotate(-90)`
         )
         .attr("text-anchor", "middle")
-        .text("Water use (Liters per kg of fabric)");
+        .text("CO2 Emissions (kg per kg of fabric)");
 };
 
 // render water pouring/bars growing
 const render_bars = (data, updateButton) => {
-    const svg = d3.select('#material-water-svg');
-    // add water pouring
+    const svg = d3.select('#material-CO2-svg');
+
+    // add static CO2 smog being emitted
     svg
         .append("g")
-        .attr("id", "material-water-pour-group")
-        .selectAll("rect")
+        .attr("id", "material-CO2-smog-group")
+        .selectAll("circle")
         .data(data)
-        .join("rect")
-        .attr("width", d => Math.pow(d.water_use, 0.5))
-        .attr("x", d => barX(d.material) + barX.bandwidth() / 2 - Math.pow(d.water_use, 0.5) / 2)
-        .attr("height", 10)
-        .attr("fill", "lightblue")
-        .transition(pourTransition())
-        .attr("width", d => Math.pow(d.water_use, 0.5))
-        .attr("x", d => barX(d.material) + barX.bandwidth() / 2 - Math.pow(d.water_use, 0.5) / 2)
-        .attr("height", vizSize.height)
-        .attr("y", d => 0)
-        .attr("fill", "lightblue")
-        .transition(pourTransition())
-        .attr("x", d => barX(d.material) + barX.bandwidth() / 2 - Math.pow(d.water_use, 0.5) / 2)
-        .attr("width", 0)
-        .attr("height", 0)
-        .attr("y", vizSize.height)
-        .attr("fill", "lightblue");
+        .join("circle")
+        .attr("r", 0)
+        .attr("cx", d => barX(d.material) + barX.bandwidth() / 2)
+        .attr("cy", vizSize.height)
+        .attr("opacity", 0)
+        .attr("fill", "grey")
+        .transition(smogTransition())
+        .attr("r", d => d.CO2_emission * 2)
+        .attr("cx", d => barX(d.material) + barX.bandwidth() / 2)
+        .attr("cy", (d) => barY(d.CO2_emission))
+        .attr("fill", "grey")
+        .attr("opacity", 0.3);
 
     // add bars
     svg
         .append("g")
-        .attr("id", "material-water-bar-group")
+        .attr("id", "material-CO2-bar-group")
         .selectAll("rect")
         .data(data)
         .join("rect")
-        .attr("class", "material-water-bars")
-        .attr("id", d => d.material + '-water-bar')
+        .attr("class", "material-CO2-bars")
+        .attr("id", d => d.material + '-CO2-bar')
         .attr("width", barX.bandwidth())
         .attr("x", d => barX(d.material))
         .attr("height", 0)
         .attr("y", vizSize.height)
         .attr("fill", "white")
         .attr("stroke", "transparent")
-        .transition(waterTransition())
-        .delay((d, i) => {
-            return pour_duration / 2 + 100 * i;
-        })
-        .attr("height", (d) => vizSize.height - barY(d.water_use))
-        .attr("y", (d) => barY(d.water_use))
+        .transition(barTransition())
+        // .delay((d, i) => {
+        //     return bar_duration / 2 + 100 * i;
+        // })
+        .attr("height", (d) => vizSize.height - barY(d.CO2_emission))
+        .attr("y", (d) => barY(d.CO2_emission))
         .attr("stroke", "black")
-        .attr("fill", "lightblue");
+        .attr("fill", "grey");
+
+    // add continuous CO2 emission animation
+    // smog emitting function
+    let smog_counter = 0;
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const render_smog = async (size) => {
+        const smog_size = Math.random() + 1;
+        const smog_delay = (Math.random() + 1) * 1500;
+        await delay(smog_delay);
+        // render smog
+        svg
+            .append("g")
+            .attr("class", "CO2-animated-smog-group")
+            .selectAll("circle")
+            .data(data)
+            .join("circle")
+            .attr("r", 0)
+            .attr("cx", d => barX(d.material) + barX.bandwidth() / 2)
+            .attr("cy", d => barY(d.CO2_emission))
+            .attr("opacity", 0.3)
+            .attr("fill", "grey")
+            .transition(smogTransition2())
+            .attr("r", d => Math.pow(d.CO2_emission,0.5) * 20 * size)
+            .attr("cx", d => barX(d.material) + barX.bandwidth() / 2 + 2 * barX.bandwidth())
+            .attr("cy", (d) => barY(d.CO2_emission) - smog_offset)
+            .attr("fill", "grey")
+            .attr("opacity", 0);
+        if (smog_counter % 100 == 0) {
+            d3.selectAll('.CO2-animated-smog-group')
+                .remove();
+        }
+
+        // generate next smog
+        // console.log('smog delay, size', smog_counter, smog_delay, smog_size);
+        smog_counter += 1;
+        if (smog_counter < 500) {
+            render_smog(smog_size)
+        }
+    };
+    render_smog(100) // initial call
 
     // add numbers
     svg
         .append("g")
         .attr("id", "numbers")
-        .selectAll(".water-use-text")
+        .selectAll(".CO2-use-text")
         .data(data)
         .join("text")
-        .attr('class', 'water-use-text')
+        .attr('class', 'CO2-use-text')
         .attr("text-anchor", "middle")
         .attr("x", (d) => barX(d.material) + barX.bandwidth() / 2)
         .attr("y", vizSize.height - 5)
         .attr("opacity", 0)
-        .transition(waterTransition())
+        .transition(barTransition())
         .delay((d, i) => {
-            return pour_duration * 1.1 + 100 * i;
+            return bar_duration * 0.6 + 100 * i;
         })
         .attr("opacity", 1)
-        .attr("y", (d) => barY(d.water_use) - 5)
-        .text(d => d.water_use)
+        .attr("y", (d) => barY(d.CO2_emission) - 5)
+        .text(d => d.CO2_emission)
 
     // disable button after one pour
     updateButton(true);
 
 };
 
-export default function MaterialWaterUseViz() {
+export default function MaterialCO2Viz() {
     const [waterPoured, setWaterPoured] = useState(false);
 
     // initial chart render
@@ -158,15 +200,16 @@ export default function MaterialWaterUseViz() {
 
     return (
         <>
-            <div>MaterialWaterUseViz</div>
+            <div>MaterialCO2Viz</div>
             <input
                 type='button'
                 id="pour-button"
                 onClick={() => { render_bars(materials, setWaterPoured) }}
-                value='Pour Water'
+                value='Emit CO2 (material)'
+                disabled={waterPoured}
             >
             </input>
-            <svg id="material-water-svg">
+            <svg id="material-CO2-svg">
             </svg>
         </>
     )

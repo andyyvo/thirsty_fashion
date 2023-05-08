@@ -17,6 +17,9 @@ const barTransition = () => {
 const smogTransition = () => {
     return d3.transition().duration(smog_duration).ease(d3.easeLinear);
 }
+const smogTransition2 = () => {
+    return d3.transition().duration(smog_duration * 3/2).ease(d3.easeLinear);
+}
 
 // constant axis info
 const barX = d3
@@ -45,7 +48,7 @@ const barYAxis = (g) =>
 // render initial chart
 const render_chart = (data) => {
     // select the container
-    const svg = d3.select('#CO2-emissions-svg')
+    const svg = d3.select('#CO2-process-svg')
         .attr("width", vizSize.width + vizMargin.left + vizMargin.right)
         .attr("height", vizSize.height + vizMargin.top + vizMargin.bottom);
 
@@ -77,19 +80,19 @@ const render_chart = (data) => {
 
 // render smog emitting/bars growing
 const render_bars = (data, updateButton) => {
-    const svg = d3.select('#CO2-emissions-svg');
+    const svg = d3.select('#CO2-process-svg');
 
     // add static CO2 smog being emitted
     svg
         .append("g")
-        .attr("id", "CO2-emission-smog-group")
+        .attr("id", "CO2-process-emission-smog-group")
         .selectAll("circle")
         .data(data)
         .join("circle")
         .attr("r", 0)
         .attr("cx", d => barX(d.production_type) + barX.bandwidth() / 2)
         .attr("cy", vizSize.height)
-        .attr("opacity", 1)
+        .attr("opacity", 0)
         .attr("fill", "grey")
         .transition(smogTransition())
         .attr("r", d => Math.pow(d.emissions, 0.6))
@@ -101,11 +104,11 @@ const render_bars = (data, updateButton) => {
     // add bars
     svg
         .append("g")
-        .attr("id", "CO2-emission-bar-group")
+        .attr("id", "CO2-process-emission-bar-group")
         .selectAll("rect")
         .data(data)
         .join("rect")
-        .attr("class", "CO2-emission-bars")
+        .attr("class", "CO2-process-emission-bars")
         .attr("id", d => d.production_type + '-CO2-emission-bar')
         .attr("width", barX.bandwidth())
         .attr("x", d => barX(d.production_type))
@@ -123,15 +126,14 @@ const render_bars = (data, updateButton) => {
         .attr("fill", "grey");
 
     // add continuous CO2 emission animation
-
     // smog emitting function
-    let smog_counter = 0;
+    let smog_counter = 1;
     const delay = ms => new Promise(res => setTimeout(res, ms));
     const render_smog = async (size) => {
         // render smog
         svg
             .append("g")
-            .attr("class", "CO2-animated-smog-group")
+            .attr("class", "CO2-process-animated-smog-group")
             .selectAll("circle")
             .data(data)
             .join("circle")
@@ -140,15 +142,16 @@ const render_bars = (data, updateButton) => {
             .attr("cy", d => barY(d.emissions))
             .attr("opacity", 0.3)
             .attr("fill", "grey")
-            .transition(smogTransition())
+            .transition(smogTransition2())
             .attr("r", d => Math.pow(d.emissions, 0.6) * size)
             .attr("cx", d => barX(d.production_type) + barX.bandwidth() / 2 + 2 * barX.bandwidth())
             .attr("cy", (d) => barY(d.emissions) - smog_offset)
             .attr("fill", "grey")
             .attr("opacity", 0);
-            // .exit()
-            // .remove();
-
+        if (smog_counter % 100 == 0) {
+            d3.selectAll('.CO2-process-animated-smog-group')
+                .remove();
+        }
         // generate next smog
         const smog_size = Math.random() + 1;
         const smog_delay = (Math.random() + 1) * 1500;
@@ -159,17 +162,16 @@ const render_bars = (data, updateButton) => {
             render_smog(smog_size)
         }
     };
-
     render_smog(100) // initial call
 
     // add numbers
     svg
         .append("g")
         .attr("id", "numbers")
-        .selectAll(".water-use-text")
+        .selectAll(".CO2-process-use-text")
         .data(data)
         .join("text")
-        .attr('class', 'water-use-text')
+        .attr('class', 'CO2-process-use-text')
         .attr("text-anchor", "middle")
         .attr("x", (d) => barX(d.production_type) + barX.bandwidth() / 2)
         .attr("y", vizSize.height - 5)
@@ -197,15 +199,16 @@ export default function CO2EmissionsViz() {
 
     return (
         <>
-            <div>CO2EmissionsViz</div>
+            <div>CO2ProcessEmissionsViz</div>
             <input
                 type='button'
                 id="pour-button"
                 onClick={() => { render_bars(CO2, setEmissions) }}
-                value='Emit CO2'
+                value='Emit CO2 (Process)'
+                disabled={emissions}
             >
             </input>
-            <svg id="CO2-emissions-svg">
+            <svg id="CO2-process-svg">
             </svg>
         </>
     )
