@@ -3,12 +3,12 @@
 
 .contentscreen {
   position: relative;
-  height: 100vh; // for scroll screen
   width: 100%;
   overflow: scroll;
 }
 
 .snap {
+  height: 100vh; // for scroll screen
   scroll-snap-type: mandatory;
   scroll-snap-type: y mandatory;
 }
