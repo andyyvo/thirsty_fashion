@@ -1,4 +1,14 @@
-#pour-button{
-    fill: gray;
+#material-CO2-button{
+    background-color: rgb(186, 186, 186);
+    margin-bottom: 5px;
+    padding: 2px;
     border: black solid 1px;
+}
+
+#material-CO2-button:hover{
+    cursor: pointer;
+}
+
+#material-CO2-button:disabled{
+    cursor:default;
 }

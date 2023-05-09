@@ -1,4 +1,14 @@
 #pour-button{
-    fill: gray;
+    background-color: lightblue;
+    margin-bottom: 5px;
+    padding: 2px;
     border: black solid 1px;
+}
+
+#pour-button:hover{
+    cursor: pointer;
+}
+
+#pour-button:disabled{
+    cursor:default;
 }

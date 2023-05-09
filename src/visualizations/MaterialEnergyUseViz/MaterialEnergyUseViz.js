@@ -164,7 +164,7 @@ export default function MaterialEnergyUseViz({ width, height, margins }) {
         <div className='material-svg-div'>
             <input
                 type='button'
-                id="pour-button"
+                id="energy-button"
                 onClick={() => { render_bars(materials, height, setWaterPoured) }}
                 value='Use Energy'
                 disabled={waterPoured}

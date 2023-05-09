@@ -2,7 +2,11 @@
     display: flex;
 }
 
-.material-svg-div {
-    border: black 1px dashed;
-    margin: 0px 5px;
+.material-svg-div,
+.material-text-div {
+    margin: 5px;
 }
+
+/* .material-svg-div{
+    border: black 1px dashed;
+} */

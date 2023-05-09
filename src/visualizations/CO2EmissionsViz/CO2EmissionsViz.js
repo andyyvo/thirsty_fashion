@@ -56,7 +56,7 @@ const render_chart = (data) => {
     svg.append("g").call(barXAxis);
     svg
         .append("text")
-        .attr("x", vizSize.width / 2) // center label
+        .attr("x", (vizSize.width + vizMargin.left) /2) // center label
         .attr("y", vizSize.height + vizMargin.bottom + vizMargin.top - 5)
         .attr("text-anchor", "middle")
         // .attr("font-size", 10)
@@ -199,15 +199,14 @@ export default function CO2EmissionsViz() {
 
     return (
         <>
-            <div>CO2ProcessEmissionsViz</div>
             <input
                 type='button'
-                id="pour-button"
+                id="process-CO2-button"
                 onClick={() => { render_bars(CO2, setEmissions) }}
-                value='Emit CO2 (Process)'
+                value='Take a look'
                 disabled={emissions}
             >
-            </input>
+            </input><br/>
             <svg id="CO2-process-svg">
             </svg>
         </>

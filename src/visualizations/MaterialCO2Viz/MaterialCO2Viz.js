@@ -201,9 +201,9 @@ export default function MaterialCO2Viz({ width, height, margins }) {
         <div className='material-svg-div'>
             <input
                 type='button'
-                id="pour-button"
+                id="material-CO2-button"
                 onClick={() => { render_bars(materials, height, setWaterPoured) }}
-                value='Emit CO2 (material)'
+                value='Emit CO2'
                 disabled={waterPoured}
             >
             </input>

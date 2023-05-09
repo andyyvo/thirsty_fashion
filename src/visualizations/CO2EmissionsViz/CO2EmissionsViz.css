@@ -1,4 +1,14 @@
-#pour-button{
-    fill: gray;
+#process-CO2-button{
+    background-color: rgb(186, 186, 186);
+    margin-bottom: 5px;
+    padding: 2px;
     border: black solid 1px;
+}
+
+#process-CO2-button:hover{
+    cursor: pointer;
+}
+
+#process-CO2-button:disabled{
+    cursor:default;
 }
