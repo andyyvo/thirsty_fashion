@@ -19,11 +19,6 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={router} />
-      <div className='all-viz-div'>
-        < MaterialVizDashboard />
-        < CO2EmissionsViz />
-        {isLoaded && < BackgroundWaterFillViz color='red' />}
-      </div>
     </div>
   );
 }

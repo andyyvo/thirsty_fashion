@@ -9,19 +9,20 @@ export default function MaterialVizDashboard() {
     useEffect(() => {
         setIsLoaded(true);
     }, []);
-
+    const third_width = Math.round(window.innerWidth/4);
+    const third_height = Math.round(third_width * 2/3);
     return (
         <div className='t-shirt-viz-dashboard'>
             <div >
-                {isLoaded && < MaterialWaterUseViz height={300} width={400} margins={{ top: 15, right: 15, bottom: 20, left: 80 }} />}
+                {isLoaded && < MaterialWaterUseViz height={third_height} width={third_width} margins={{ top: 15, right: 15, bottom: 20, left: 80 }} />}
                 <p>blurb goes here</p>
             </div>
             <div>
-                {isLoaded && < MaterialEnergyUseViz height={300} width={400} margins={{ top: 15, right: 15, bottom: 20, left: 80 }} />}
+                {isLoaded && < MaterialEnergyUseViz height={third_height} width={third_width} margins={{ top: 15, right: 15, bottom: 20, left: 80 }} />}
                 <p>blurb goes here</p>
             </div>
             <div>
-                {isLoaded && < MaterialCO2Viz height={300} width={400} margins={{ top: 15, right: 15, bottom: 20, left: 80 }} />}
+                {isLoaded && < MaterialCO2Viz height={third_height} width={third_width} margins={{ top: 15, right: 15, bottom: 20, left: 80 }} />}
                 <p>blurb goes here</p>
             </div>
         </div>
