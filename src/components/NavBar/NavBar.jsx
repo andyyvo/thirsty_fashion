@@ -12,7 +12,7 @@ export const NavBar = () => {
   /** logo */
   const NavBarLogo = (
     <div className="navbar-logo">
-      <Link to="/">
+      <Link to="/thirsty_fashion">
         <img src={Logo} alt="logo" />
       </Link>
     </div>
@@ -21,9 +21,9 @@ export const NavBar = () => {
   /** menu options */
   const NavBarMenu = (
     <div className="navbar-menu">
-      <Link to="/thirsty_fashion/about">
+      {/* <Link to="/thirsty_fashion/about">
         <Button variant={"link"} color={"black"}><p className="avenir">About</p></Button>
-      </Link>
+      </Link> */}
     </div>
   );
 
