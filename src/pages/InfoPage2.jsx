@@ -7,6 +7,7 @@ import { ReactComponent as WaterDrop50 } from "../assets/images/waterdrop50.svg"
 import { ReactComponent as California } from "../assets/images/california.svg";
 import { ReactComponent as WaterDrop95 } from "../assets/images/waterdrop95.svg";
 import { Link } from "react-router-dom";
+import ScrollToTop from "../config/ScrollToTop";
 
 export const InfoPage2 = () => {
 
@@ -25,6 +26,7 @@ export const InfoPage2 = () => {
 
   return (
     <>
+      <ScrollToTop />
       <PageScreen classname="infopage2" noOverflowScroll>
         <div className="infopage2-wrapper">
           <div className="stickyscroll1">

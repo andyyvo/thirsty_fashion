@@ -2,10 +2,12 @@ import React from "react";
 import { PageScreen } from "../components/PageScreen/PageScreen";
 import MaterialVizDashboard from "../visualizations/MaterialVizDashboard/MaterialVizDashboard";
 import CO2EmissionsViz from "../visualizations/CO2EmissionsViz/CO2EmissionsViz";
+import ScrollToTop from "../config/ScrollToTop";
 
 export const InfoPage3 = () => {
   return (
     <>
+    <ScrollToTop />
       <PageScreen classname="infopage3">
         <div className="process-viz-div top-level-div">
           <h3 className="process-header">Costs of the Process</h3>
