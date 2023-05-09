@@ -107,3 +107,37 @@
     opacity: 0.5;
   }
 }
+
+// after infopage1
+.postinfopage1 {
+  height: auto;
+  width: 100%;
+  position: relative;
+  background-color: v.$blue2;
+  padding: 10rem 4rem 10rem 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-content {
+    text-align: center;
+  }
+}
+
+.leftlinebordertext {
+  position: relative;
+  text-align: start;
+  border-left: 4px solid v.$white;
+  padding: 2rem 40% 2rem 1rem;
+  margin-top: 10rem;
+}
+
+#think {
+  text-align: start;
+  margin-top: 10rem;
+}
+
+#bigger {
+  font-family: 'Avenir-Black', sans-serif;
+  font-size: 20rem;
+}
