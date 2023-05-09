@@ -6,12 +6,13 @@ import { NavBar } from "../NavBar/NavBar";
  * and that I only need to write it once
  * copied and modified from andyyvo-react js components instead of ts
  * props.snap allows page to have scroll snap css properties
+ * props.noOverflowScreen allows the page to have no overflow properties
  */
 
 export const PageScreen = (props) => {
   /** classnames */
   const containerClassName = `pagescreen ${props.classname}`;
-  const contentClassName = props.snap ? "contentscreen snap" : "contentscreen";
+  const contentClassName = props.snap ? "contentscreen snap" : (props.noOverflowScroll ? "normalscreen" : "contentscreen");
 
   return (
     <div className={containerClassName}>

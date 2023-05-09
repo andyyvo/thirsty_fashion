@@ -1,0 +1,26 @@
+.infopage2 {
+  position: relative;
+  height: auto;
+  width: 100vw;
+
+  &-wrapper {
+    position: sticky;
+    top: 0;
+  }
+
+  // &-wrapper.split {
+  //   display: flex;
+  //   flex-direction: row;
+  // }
+}
+
+.billion79, .lakeOntario {
+  position: relative;
+  height: 120vh;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

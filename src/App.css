@@ -40,6 +40,11 @@ button:hover {
   scroll-snap-type: y mandatory;
 }
 
+.normalscreen {
+  position: relative;
+  width: 100%;
+}
+
 span.rating-item-span svg {
   height: 4rem;
   width: auto;
@@ -464,6 +469,27 @@ p.right {
 #bigger {
   font-family: "Avenir-Black", sans-serif;
   font-size: 20rem;
+}
+
+.infopage2 {
+  position: relative;
+  height: auto;
+  width: 100vw;
+}
+.infopage2-wrapper {
+  position: sticky;
+  top: 0;
+}
+
+.billion79, .lakeOntario {
+  position: relative;
+  height: 120vh;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @font-face {
