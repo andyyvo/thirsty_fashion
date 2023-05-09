@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/thirsty_fashion/static/css/main.3acaa274.css",
+    "main.js": "/thirsty_fashion/static/js/main.0042edf9.js",
+    "static/media/textile-background.jpg": "/thirsty_fashion/static/media/textile-background.5c576585961c1a7e968f.jpg",
+    "static/media/thirsty_fashion_logo.png": "/thirsty_fashion/static/media/thirsty_fashion_logo.81c30a968886134badb8.png",
+    "static/media/Avenir-BookOblique.ttf": "/thirsty_fashion/static/media/Avenir-BookOblique.d87f1d4f06b83c5c9170.ttf",
+    "static/media/Avenir-Book.ttf": "/thirsty_fashion/static/media/Avenir-Book.f3443d085a4785c7b05f.ttf",
+    "static/media/Avenir-Black.ttf": "/thirsty_fashion/static/media/Avenir-Black.be9ee6dd5a410a549288.ttf",
+    "static/media/Avenir-BlackOblique.ttf": "/thirsty_fashion/static/media/Avenir-BlackOblique.e855e2dee76a69b16e56.ttf",
+    "static/media/california.svg": "/thirsty_fashion/static/media/california.692566646393c03d489ae4d77db03812.svg",
+    "static/media/lakeontario.svg": "/thirsty_fashion/static/media/lakeontario.317a2fd6141c9686f6630e20608f2f9e.svg",
+    "static/media/hottub.svg": "/thirsty_fashion/static/media/hottub.110107153b8ebc5921a740000245515f.svg",
+    "static/media/waterglass-off.svg": "/thirsty_fashion/static/media/waterglass-off.210b93a57f29dfeeb25bc38e791f68af.svg",
+    "static/media/waterdrop95.svg": "/thirsty_fashion/static/media/waterdrop95.403548b00ff2a81ed2bf9ef665890f57.svg",
+    "static/media/waterglass-on.svg": "/thirsty_fashion/static/media/waterglass-on.b2504a887cc88e6e26361d4dfc6c8cb3.svg",
+    "static/media/arrow.svg": "/thirsty_fashion/static/media/arrow.560a91ae2b78146c63e6d2a0e554a71f.svg",
+    "static/media/waterdrop50.svg": "/thirsty_fashion/static/media/waterdrop50.b25d4dab6d1c04720565a8574c522c14.svg",
+    "index.html": "/thirsty_fashion/index.html",
+    "static/media/wave_animation.svg": "/thirsty_fashion/static/media/wave_animation.714346a4c46a2413e6a3c5b40753a9c7.svg",
+    "static/media/waterdrop.svg": "/thirsty_fashion/static/media/waterdrop.6f9cbb8bf0790c9067d61e881240b630.svg",
+    "main.3acaa274.css.map": "/thirsty_fashion/static/css/main.3acaa274.css.map",
+    "main.0042edf9.js.map": "/thirsty_fashion/static/js/main.0042edf9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3acaa274.css",
+    "static/js/main.0042edf9.js"
+  ]
+}
