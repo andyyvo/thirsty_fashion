@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# The Thirsty Fashion Industry
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Team
 
-## Available Scripts
+[Andy Vo](https://www.linkedin.com/in/andyyvo/), [Tyler Wu](https://www.linkedin.com/in/tyler-wu/), [Jo Lu](https://www.linkedin.com/in/jovan-lu/)
 
-In the project directory, you can run:
+## About the Project
 
-### `npm start`
+For the final project of [INFO 247](https://www.ischool.berkeley.edu/courses/info/247) of Spring 2023, we decided to investigate and research water use in the fashion industry. This website aims to capture a small piece of that discussion through an informative scrollytelly-like website with visualizations and analogies.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Motivation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The fashion business is undeniably glamorous, but few are aware of its shadowy side. The clothing industry generates 20% of the world's wastewater and two billion tons of carbon dioxide annually. According to the United Nations Environment Programme (UNEP), the fabric dyeing process, which primarily utilizes synthetic dyes, is the largest water polluter, only second to global nutrient pollution.
 
-### `npm test`
+## Project Goals
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The goals for this data visualization project focusing on the environmental impact of the fashion industry are as follows:
 
-### `npm run build`
+1. Raise awareness: Increase public understanding of the environmental issues associated with the fashion industry, such as water pollution, carbon emissions, and resource consumption.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Inform decision-making: Provide clear and concise information to guide consumers, industry professionals, and policymakers towards more sustainable choices in production, consumption, and policy development.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Identify trends and patterns: Reveal significant patterns and trends in the data, highlighting areas where improvements can be made to reduce the industry's environmental impact.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Encourage sustainable practices: Promote eco-friendly alternatives in material selection, production processes, and consumer behavior, leading to a greener fashion industry.
 
-### `npm run eject`
+By achieving these goals, the data visualization project aims to contribute to a better understanding of the environmental challenges faced by the fashion industry and inspire more sustainable practices, ultimately reducing the industry's negative effects on the environment.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Data
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In our visualization, various data sets were analyzed and integrated to provide a comprehensive overview of the environmental impact of the textile and fashion industry. These data sets were collected from research papers and reports published by international organizations, ensuring their relevance and usefulness to the project. Prior to using each data set, exploratory data analysis (EDA) was conducted in Excel to clean the data and ensure its relevance.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. [Environmental impact of textile fibres – what we know and what we don’t know. Fiber Bible part 2](https://www.researchgate.net/publication/331980907_Environmental_impact_of_textile_fibres_-_what_we_know_and_what_we_don't_know_Fiber_Bible_part_2). This report, published by Mistra Future Fashion, provides an overview of the environmental impact of various textile fibers. It examines the sustainability of fibers from natural, regenerated, and synthetic sources. The report includes information on the life cycle assessments (LCAs) of different fibers, their water and energy consumption, greenhouse gas emissions, and chemical use. It also highlights knowledge gaps and research needs related to the environmental impact of textile fibers.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. [Environmental assessment of Swedish clothing consumption – six garments, sustainable futures](https://www.researchgate.net/publication/335653501_Environmental_assessment_of_Swedish_clothing_consumption_-_six_garments_sustainable_futures). This report, published by Mistra Future Fashion, evaluates the environmental impact of six different garments typically consumed in Sweden. The report analyzes the life cycle of these garments, including production, use, and end-of-life stages. The study provides data on the environmental performance of the selected garments, with a focus on climate change, resource depletion, and water scarcity. It also discusses potential future scenarios and provides recommendations for reducing the environmental impact of clothing consumption.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. [Pulse of the Fashion Industry - Global Fashion Agenda & BCG](https://globalfashionagenda.org/product/pulse-of-the-fashion-industry-2017/). This report, published by the Global Fashion Agenda and The Boston Consulting Group (BCG), offers a comprehensive analysis of the fashion industry's environmental and social performance. The report provides data on various aspects of the industry, such as water use, chemical use, carbon emissions, and labor conditions. It also presents a "Pulse Score," which measures the sustainability performance of different segments within the industry. Additionally, the report identifies opportunities for improvement and proposes various initiatives to help the industry become more sustainable.
