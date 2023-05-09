@@ -69,7 +69,7 @@ export const InfoPage2 = () => {
             <p id="source" className="avenir blacktext">Source: Global Fashion Agenda (GFA) & The Boston Consulting Group (BCG). Pulse of the fashion industry (2017)</p>
           </div>
         </div>
-        <Link to="/info3">
+        <Link to="/thirsty_fashion/info3">
           <h4 id="toInfo3" className="avenir blacktext"><u>Let's take a look at how water use compares to other resources in fashion!</u></h4>
         </Link>
       </PageScreen>

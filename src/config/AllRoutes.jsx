@@ -12,24 +12,24 @@ import { InfoPage3 } from "../pages/InfoPage3";
 export const router = createBrowserRouter([
   /** home root */
   {
-    path: "/",
+    path: "/thirsty_fashion",
     element: <HomePage />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/about",
+    path: "/thirsty_fashion/about",
     element: <AboutPage />,
   },
   {
-    path: "/info1",
+    path: "/thirsty_fashion/info1",
     element: <InfoPage1 />
   },
   {
-    path: "/info2",
+    path: "/thirsty_fashion/info2",
     element: <InfoPage2 />
   },
   {
-    path: "/info3",
+    path: "/thirsty_fashion/info3",
     element: <InfoPage3 />
   }
 ]);

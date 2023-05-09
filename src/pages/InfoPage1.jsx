@@ -161,7 +161,7 @@ export const InfoPage1 = () => {
             <p className="avenir whitetext">That's enough water for over a thousand people - even up to 2,000 (assuming 6-8 cups of water a day)! Imagine, you could last four years worth of water from the amount needed to make the cotton t-shirt you're wearing!</p>
           </div>
           <h1 id="think" className="playfair large whitetext">But let's think</h1>
-          <Link to="/info2">
+          <Link to="/thirsty_fashion/info2">
             <span id="bigger" className="whitetext"><u>BIGGER.</u></span>
           </Link>
           <p className="avenir mini whitetext">Source: <a href="https://ellenmacarthurfoundation.org/a-new-textiles-economy" target="_blank" rel="noreferrer">https://ellenmacarthurfoundation.org/a-new-textiles-economy</a></p>

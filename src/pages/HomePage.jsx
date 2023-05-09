@@ -19,7 +19,7 @@ export const HomePage = () => {
     console.log(index);
     setRatingSelected(true);
     setTimeout(() => {
-      navigate("/info1", {state:{userInput: index}});
+      navigate("/thirsty_fashion/info1", {state:{userInput: index}});
     }, 4650);
   }
 
