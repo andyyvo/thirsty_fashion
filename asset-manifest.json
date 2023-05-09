@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/thirsty_fashion/static/css/main.3acaa274.css",
-    "main.js": "/thirsty_fashion/static/js/main.0042edf9.js",
+    "main.js": "/thirsty_fashion/static/js/main.c20b5fe9.js",
     "static/media/textile-background.jpg": "/thirsty_fashion/static/media/textile-background.5c576585961c1a7e968f.jpg",
     "static/media/thirsty_fashion_logo.png": "/thirsty_fashion/static/media/thirsty_fashion_logo.81c30a968886134badb8.png",
     "static/media/Avenir-BookOblique.ttf": "/thirsty_fashion/static/media/Avenir-BookOblique.d87f1d4f06b83c5c9170.ttf",
@@ -20,10 +20,10 @@
     "static/media/wave_animation.svg": "/thirsty_fashion/static/media/wave_animation.714346a4c46a2413e6a3c5b40753a9c7.svg",
     "static/media/waterdrop.svg": "/thirsty_fashion/static/media/waterdrop.6f9cbb8bf0790c9067d61e881240b630.svg",
     "main.3acaa274.css.map": "/thirsty_fashion/static/css/main.3acaa274.css.map",
-    "main.0042edf9.js.map": "/thirsty_fashion/static/js/main.0042edf9.js.map"
+    "main.c20b5fe9.js.map": "/thirsty_fashion/static/js/main.c20b5fe9.js.map"
   },
   "entrypoints": [
     "static/css/main.3acaa274.css",
-    "static/js/main.0042edf9.js"
+    "static/js/main.c20b5fe9.js"
   ]
 }
