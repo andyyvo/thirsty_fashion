@@ -164,6 +164,7 @@ export const InfoPage1 = () => {
           <Link to="/info2">
             <span id="bigger" className="whitetext"><u>BIGGER.</u></span>
           </Link>
+          <p className="avenir mini whitetext">Source: <a href="https://ellenmacarthurfoundation.org/a-new-textiles-economy" target="_blank" rel="noreferrer">https://ellenmacarthurfoundation.org/a-new-textiles-economy</a></p>
         </div>
       </div>
     </>
